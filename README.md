@@ -1,6 +1,15 @@
-<<<<<<< HEAD
-# SOOLLAR'AI
+# Sistema de Transferência
 
-=======
-# sistema-de-transferencia
->>>>>>> a984063b4c0bc9ccc2da696ef652f377172291dc
+Frontend inicial do sistema SaaS de gestão de solicitações, agendamento de veículos, permissões por cargo e permissões por coluna.
+
+## Status
+
+Projeto em fase inicial de frontend mockado.
+
+## Stack
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Supabase futuramente
+- Netlify futuramente
