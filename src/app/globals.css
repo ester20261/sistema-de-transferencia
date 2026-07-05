@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 40% 98%;
+  --foreground: 222 47% 11%;
+  --border: 214 32% 91%;
+  --primary: 199 89% 38%;
+  --primary-foreground: 0 0% 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.sheet-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #94a3b8 transparent;
+}
