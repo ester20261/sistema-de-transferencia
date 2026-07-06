@@ -272,3 +272,54 @@ Se a prioridade for recuperar a interface rapidamente sem alterar layout:
 Não foi encontrado problema principal nos componentes, no App Router, no import do `globals.css`, nem no `next.config.mjs`.
 
 A perda visual vem da geração incompleta do CSS pelo Tailwind.
+
+## Correção aplicada
+
+Correção aplicada após a auditoria:
+
+1. `src/app/globals.css` foi alinhado ao Tailwind CSS 4:
+
+```css
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+@custom-variant dark (&:where(.dark, .dark *));
+```
+
+2. `postcss.config.mjs` foi simplificado para usar apenas o plugin correto do Tailwind 4:
+
+```js
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {}
+  }
+};
+
+export default config;
+```
+
+3. A build foi executada com sucesso.
+
+4. O CSS compilado voltou a conter utilities essenciais que estavam ausentes, incluindo:
+
+```txt
+p-5
+px-4
+py-3
+rounded-lg
+bg-white
+text-white
+text-slate-950
+shadow-soft
+shadow-premium
+h-10
+h-11
+gap-3
+border-slate-200
+bg-blue-600
+```
+
+5. A variante dark por classe também passou a ser emitida no formato esperado do Tailwind 4:
+
+```css
+.dark\:bg-slate-950:where(.dark,.dark *)
+```
