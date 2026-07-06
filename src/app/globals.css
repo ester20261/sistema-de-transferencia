@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --background: 210 40% 98%;
-  --foreground: 222 47% 11%;
-  --border: 214 32% 91%;
-  --primary: 199 89% 38%;
+  --background: 214 40% 97%;
+  --foreground: 222 52% 12%;
+  --border: 214 32% 88%;
+  --primary: 216 72% 28%;
   --primary-foreground: 0 0% 100%;
 }
 
@@ -20,8 +20,11 @@ html {
 
 body {
   min-height: 100%;
-  background: hsl(var(--background));
+  background:
+    radial-gradient(circle at top left, rgba(14, 116, 144, 0.09), transparent 34rem),
+    linear-gradient(180deg, #f8fafc 0%, #eef4f8 100%);
   color: hsl(var(--foreground));
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
 button,
@@ -34,4 +37,18 @@ textarea {
 .sheet-scroll {
   scrollbar-width: thin;
   scrollbar-color: #94a3b8 transparent;
+}
+
+.glass-panel {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 80px rgba(2, 6, 23, 0.24);
+  backdrop-filter: blur(18px);
+}
+
+.premium-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 44px 44px;
 }

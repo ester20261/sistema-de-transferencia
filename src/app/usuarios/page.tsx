@@ -8,9 +8,10 @@ import { formatDateTime } from "@/lib/utils";
 export default function UsersPage() {
   return (
     <AppShell>
-      <div className="mb-6 flex flex-col justify-between gap-3 md:flex-row md:items-end">
+      <div className="mb-6 flex flex-col justify-between gap-3 rounded-2xl border border-slate-200/80 bg-white/90 p-5 shadow-soft md:flex-row md:items-end">
         <div>
-          <h1 className="text-2xl font-bold">Usuários</h1>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Administração</p>
+          <h1 className="mt-1 text-2xl font-bold">Usuários</h1>
           <p className="text-slate-500">Cadastro administrativo mockado, sem persistência real.</p>
         </div>
         <Button><Plus className="h-4 w-4" /> Adicionar usuário</Button>
@@ -18,7 +19,7 @@ export default function UsersPage() {
       <Card className="overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-[860px] w-full text-left text-sm">
-            <thead className="bg-slate-50 text-xs uppercase text-slate-500">
+            <thead className="bg-slate-900 text-xs uppercase text-slate-200">
               <tr>
                 <th className="px-4 py-3">Nome</th>
                 <th className="px-4 py-3">E-mail</th>
@@ -30,7 +31,7 @@ export default function UsersPage() {
             </thead>
             <tbody className="divide-y divide-slate-100">
               {users.map((user) => (
-                <tr key={user.id} className="bg-white">
+                <tr key={user.id} className="bg-white transition hover:bg-sky-50/60">
                   <td className="px-4 py-3 font-semibold">{user.nome}</td>
                   <td className="px-4 py-3">{user.email}</td>
                   <td className="px-4 py-3">{user.cargo}</td>

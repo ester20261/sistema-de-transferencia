@@ -9,8 +9,9 @@ import { formatDateTime } from "@/lib/utils";
 export default function NotificationsPage() {
   return (
     <AppShell>
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold">Central de notificações</h1>
+      <div className="mb-6 rounded-2xl border border-slate-200/80 bg-white/90 p-5 shadow-soft">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Eventos operacionais</p>
+        <h1 className="mt-1 text-2xl font-bold">Central de notificações</h1>
         <p className="text-slate-500">Eventos simulados para alterações, cotação, agenda e documentação.</p>
       </div>
       <div className="space-y-4">
@@ -20,7 +21,7 @@ export default function NotificationsPage() {
             <Card key={notification.id}>
               <CardContent className="flex flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between">
                 <div className="flex gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-sky-50 text-sky-700">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-950 to-sky-700 text-white shadow-lg shadow-sky-900/15">
                     <Bell className="h-5 w-5" />
                   </div>
                   <div>
@@ -37,7 +38,7 @@ export default function NotificationsPage() {
                   </div>
                 </div>
                 {order ? (
-                  <Link className="text-sm font-medium text-sky-700" href={`/operacao/${order.id}`}>
+                  <Link className="inline-flex h-9 items-center rounded-lg border border-sky-200 bg-sky-50 px-3 text-sm font-semibold text-sky-800" href={`/operacao/${order.id}`}>
                     Abrir {order.pedido}
                   </Link>
                 ) : null}

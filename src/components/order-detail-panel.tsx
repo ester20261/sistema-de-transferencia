@@ -1,5 +1,6 @@
 "use client";
 
+import { CalendarClock, FileText, History, Package } from "lucide-react";
 import { LockedLabel } from "@/components/locked-label";
 import { StatusBadge } from "@/components/status-badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -49,12 +50,17 @@ export function OrderDetailPanel({ order, role, logs }: { order: Order; role: Ro
   return (
     <div className="grid gap-5 xl:grid-cols-[1fr_360px]">
       <div className="space-y-5">
-        <Card>
-          <CardHeader>
+        <Card className="overflow-hidden">
+          <CardHeader className="bg-[linear-gradient(135deg,#f8fafc_0%,#eef7fb_100%)]">
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <div>
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-950 text-white">
+                  <Package className="h-5 w-5" />
+                </div>
+                <div>
                 <h3 className="text-lg font-bold">Detalhes do pedido {order.pedido}</h3>
                 <p className="text-sm text-slate-500">Campos bloqueados simulam permissões futuras por coluna.</p>
+                </div>
               </div>
               <StatusBadge status={order.status} />
             </div>
@@ -80,9 +86,9 @@ export function OrderDetailPanel({ order, role, logs }: { order: Order; role: Ro
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="overflow-hidden">
           <CardHeader>
-            <h3 className="text-lg font-bold">Agendamento, motorista e veículo</h3>
+            <h3 className="flex items-center gap-2 text-lg font-bold"><CalendarClock className="h-5 w-5 text-sky-700" /> Agendamento, motorista e veículo</h3>
           </CardHeader>
           <CardContent className="grid gap-4 md:grid-cols-2">
             <Field label="Transportadora" field="transportadora" role={role} value={order.transportadora} />
@@ -99,9 +105,9 @@ export function OrderDetailPanel({ order, role, logs }: { order: Order; role: Ro
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="overflow-hidden">
           <CardHeader>
-            <h3 className="text-lg font-bold">Fiscal e documentação</h3>
+            <h3 className="flex items-center gap-2 text-lg font-bold"><FileText className="h-5 w-5 text-sky-700" /> Fiscal e documentação</h3>
           </CardHeader>
           <CardContent className="grid gap-4 md:grid-cols-2">
             <Field label="NF" field="nf" role={role} value={order.nf} />
@@ -122,13 +128,13 @@ export function OrderDetailPanel({ order, role, logs }: { order: Order; role: Ro
           </CardContent>
         </Card>
       </div>
-      <Card>
+      <Card className="overflow-hidden">
         <CardHeader>
-          <h3 className="text-lg font-bold">Histórico simulado</h3>
+          <h3 className="flex items-center gap-2 text-lg font-bold"><History className="h-5 w-5 text-sky-700" /> Histórico simulado</h3>
         </CardHeader>
         <CardContent className="space-y-4">
           {logs.map((log) => (
-            <div key={log.id} className="border-l-2 border-sky-200 pl-3">
+            <div key={log.id} className="rounded-xl border border-slate-100 bg-slate-50/70 p-3">
               <p className="text-sm font-semibold text-slate-900">{log.autor}</p>
               <p className="text-sm text-slate-600">{log.descricao}</p>
               <p className="mt-1 text-xs text-slate-400">{formatDateTime(log.dataHora)}</p>
