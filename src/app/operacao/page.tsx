@@ -4,6 +4,7 @@ import { ClipboardList, Plus, ShieldCheck } from "lucide-react";
 import { useMemo, useState } from "react";
 import { AppShell } from "@/components/layout/app-shell";
 import { OrderTable } from "@/components/order-table";
+import { PageHeader } from "@/components/premium-ui";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input, Select, Textarea } from "@/components/ui/input";
@@ -49,32 +50,25 @@ export default function OperationPage() {
 
   return (
     <AppShell>
-      <div className="mb-6 rounded-2xl border border-slate-200/80 bg-white/90 p-5 shadow-soft">
-        <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Controle operacional</p>
-            <h1 className="mt-1 text-2xl font-bold">Tabela operacional</h1>
-            <p className="text-slate-500">Planilha com busca, filtros e bloqueios visuais por perfil.</p>
-          </div>
-          <div className="flex items-center gap-2 rounded-xl border border-blue-100 bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-900">
-            <ShieldCheck className="h-4 w-4" />
-            Perfil: {role}
-          </div>
-        </div>
-      </div>
+      <PageHeader
+        eyebrow="Controle operacional"
+        title="Tabela operacional"
+        description="Planilha profissional com busca, filtros e bloqueios visuais por perfil."
+        meta={<span className="inline-flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-900 dark:border-blue-900 dark:bg-blue-950/40 dark:text-blue-200"><ShieldCheck className="h-4 w-4" /> Perfil: {role}</span>}
+      />
       <Card className="mb-5 overflow-hidden">
-        <CardHeader className="bg-[linear-gradient(135deg,#f8fafc_0%,#eef7fb_100%)]">
+        <CardHeader className="bg-[linear-gradient(135deg,#f8fafc_0%,#eef4ff_100%)] dark:bg-none dark:bg-slate-900/70">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-950 text-white">
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-600 text-white">
                 <ClipboardList className="h-5 w-5" />
               </div>
               <div>
-              <h2 className="font-bold">Criar nova solicitação</h2>
-              <p className="text-sm text-slate-500">Disponível para Admin e Solicitante nesta simulação.</p>
+                <h2 className="font-bold text-slate-950 dark:text-white">Criar nova solicitação</h2>
+                <p className="text-sm text-slate-500 dark:text-slate-400">Disponível para Admin e Solicitante nesta simulação.</p>
               </div>
             </div>
-            <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-sm font-semibold text-slate-700 shadow-sm">{role}</span>
+            <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300">{role}</span>
           </div>
         </CardHeader>
         <CardContent className="grid gap-3 lg:grid-cols-6">
@@ -92,7 +86,7 @@ export default function OperationPage() {
             Salvar
           </Button>
           <Textarea disabled={!canCreate} className="lg:col-span-6" placeholder="Observações" value={form.observacoes} onChange={(e) => setForm({ ...form, observacoes: e.target.value })} />
-          {message ? <p className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-800 lg:col-span-6">{message}</p> : null}
+          {message ? <p className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-800 lg:col-span-6 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-200">{message}</p> : null}
         </CardContent>
       </Card>
       <OrderTable orders={orders} role={role} />
